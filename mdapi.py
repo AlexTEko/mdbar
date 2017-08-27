@@ -1,5 +1,3 @@
-import time
-from threading import Thread
 from datetime import datetime
 
 import jwt
@@ -29,8 +27,6 @@ class MDApiConnector():
 
     def __get_token(self):
         now = datetime.now()
-
-        # if there is token and it's not expired yet
         if self.token[0] and (now - self.token[1]).total_seconds() < EXPIRATION:
             return self.token[0]
 
@@ -64,9 +60,6 @@ class MDApiConnector():
                 for x in stocks if x.get("country") == "US"}
 
     def get_last_ohlc_bar(self, symbolId):
-        # NB: we use internal symbolId, not ticker
-
-        # 86400 (sec) - day duration
         ohlc = self.__request("/ohlc/%s/60" % symbolId, {"size": 1})
         return ohlc[0]
 

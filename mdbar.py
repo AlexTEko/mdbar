@@ -9,7 +9,6 @@ def get_mid(candle):
 config = ConfigParser()
 config.read_file(open('config.ini'))
 
-# create connectors to API
 api = MDApiConnector(
     client_id=config['API']['client_id'],
     app_id=config['API']['app_id'],
@@ -26,7 +25,5 @@ for pair in json.loads(config['Symbols']['pairs']):
 
 for single in json.loads(config['Symbols']['singles']):
     singles.append(single.split('.')[0] + ':' + str(get_mid(api.get_last_ohlc_bar(single))))
-
-#print('{}:{}'.format(eur_usd.get('pair') ,eur_usd.get('rate')))
 
 print(' '.join(crossrates), ' '.join(singles))
