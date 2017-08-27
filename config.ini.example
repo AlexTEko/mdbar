@@ -1,0 +1,8 @@
+[API]
+client_id=AAA
+app_id=BBB
+shared_key=CCC
+
+[Symbols]
+pairs: ["EUR/RUB"]
+singles: ["XAI.EXANTE", "BTC.EXANTE", "ETH.EXANTE"]
